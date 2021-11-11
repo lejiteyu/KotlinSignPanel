@@ -6,16 +6,28 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class MainActivity : AppCompatActivity() {
     private val SIGN_REQUEST: Int = 1000
     var mIVSign: ImageView? = null
+    lateinit var handWrite : Button
+    lateinit var mainLayout:ConstraintLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        mainLayout = findViewById(R.id.main_layout)
+
         mIVSign = findViewById(R.id.iv_sign)
+
+        handWrite  = findViewById(R.id.handwrite)
+        handWrite.setOnClickListener {
+            Keyboardkt().showKeyboard(mainLayout)
+        }
+
     }
 
     /**
